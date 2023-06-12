@@ -127,3 +127,5 @@ clientCode(new ArtDecoFactory());
 console.log('Client testing with Victoria factory');
 
 clientCode(new VictoriaFactory());
+
+export default {};
