@@ -46,6 +46,10 @@
  * 
  * when we come across above scenarion we will desing abstract factory pattern using the How to Implement steps given above.
  * 
+ * 
+ * *******************
+ * "KEY SIGN OF USEAGE": it should be more in square matrix form then its a candidate for abastract factory pattern.
+ * *******************
  */
 
 //Step 1.

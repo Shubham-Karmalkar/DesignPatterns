@@ -17,7 +17,7 @@
  * 
  *  So how to do this, one way is to create a Base class and Extend it every time when 
  *  new feature comes but problem with this is you will end of huge no. of Subclasses.
- *  Another way is to have one class only and load the constructor will all the optional 
+ *  Another way is to have one class only and load the constructor with all the optional 
  *  fields.
  * 
  *  Or you can use Builder pattern.
@@ -57,8 +57,24 @@
  *      products follow the same interface. Otherwise client should fetch the result from 
  *      the builder.
  * 
+ * short digram: 
+ *  BUILDER will have methods to build PRODUCT and BUILDER will return the PRODUCT once constructed
+ *  for mostly used product type we will have Director which will have mostly use product creation methods.
  * 
  * for more (https://refactoring.guru/design-patterns/builder).
+ * 
+ * ex.
+ * matrix: 
+ *      varity        wantPool wantShower wantGarden
+ *      wood House      Y/N         Y/N     Y/N
+ *      stone House     Y/N         Y/N     Y/N
+ *      cement House    Y/N         Y/N     Y/N
+ * 
+ * 
+ * *******************
+ * "KEY SIGN OF USEAGE": here each varity will either have a feature or not and dependeing on this we can many possibilities
+ * *******************   then that is the candidatre for builder pattern
+ *                       
  */
 
 // Here "Concrete" meaning the class which will actually implement interface.
@@ -76,6 +92,7 @@ class ConcreteBuilder1 implements Builder {
         this.reset();
     }
 
+    //resetting builder is must as otherwise client has to create new builder everytime to create new product1 with different features
     public reset(): void {
         this.product = new Product1();
     }
