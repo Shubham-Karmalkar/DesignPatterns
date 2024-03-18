@@ -120,3 +120,5 @@ console.log('new process.....');
 console.log("creating adaptor request");
 const adaptor = new Adaptor(adaptee);
 clientCode(adaptor);
+
+export default {};
