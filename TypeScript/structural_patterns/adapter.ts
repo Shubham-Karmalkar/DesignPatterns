@@ -58,4 +58,65 @@
  *  1. The overall complexity of the code increases because we introduce the new set of interface and classes.
  *      Sometimes its just simple to just changes the service class so that it matches the rest of our code.
  * 
+ * Identification: 
+ *  Adapter pattern is recognized by the a constructor which takes an instance of a different abstract/interface type.
+ *      When adaptor recieves a call to any of its methods, it translates parameters to the appropriate format and
+ *      then directs the call to one or several methods of the wrapped object.
+ * 
+ * it focuses on the 3 questions:
+ *  1. what classes does it consists of?
+ *  2. what roles do these classes play?
+ *  3. In what way elements of the pattern are related?
+ * 
+ * Guide: 
+ *  1. suppose we have two classes, class A1 is a legacy class(or library) and B1 is a client class, as we can't make
+ *      changes to the class A1 we can extend B1 and create Adaptor which accepts object of A1 as property in
+ *      constructor and have all the method of B1 and modify those before making request to the A1 in those
+ *      methods.
+ * 
  */
+
+class Target {
+    public request(): string {
+        return "Target class's default behaviour";
+    }
+}
+
+class Adaptee {//3rd party library or legacy code which needs to be adapted by adaptor   
+
+    public specificRequest(): string {
+        return "Adaptee's specific request";
+    }
+}
+
+class Adaptor extends Target {
+
+    constructor(private adaptee: Adaptee) {
+        super();
+        this.adaptee = adaptee;
+    }
+    public request(): string {
+        const result = this.adaptee.specificRequest().split("").reverse().join("");
+        return `Adaptor class (Translated) ${result}`;
+    }
+}
+
+
+function clientCode(target: Target) {
+    console.log(target.request());
+}
+
+console.log("creating target: ");
+const target = new Target();
+clientCode(target);
+
+console.log('new process.....');
+
+const adaptee = new Adaptee();
+console.log("making adaptee request: ", adaptee.specificRequest());
+
+console.log('new process.....');
+
+console.log("creating adaptor request");
+const adaptor = new Adaptor(adaptee);
+clientCode(adaptor);
