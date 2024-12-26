@@ -76,7 +76,7 @@ class EncryptionDecorator extends DataDecorators {
   }
 }
 
-function clientCode() {
+export function clientCode() {
   let baseObj = new FileData();
   baseObj = new EncryptionDecorator(baseObj);
 

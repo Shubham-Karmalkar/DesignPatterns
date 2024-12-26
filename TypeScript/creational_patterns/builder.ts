@@ -145,7 +145,7 @@ class Director {
 }
 
 
-function clientCode(director: Director){
+export function clientCode(director: Director){
     const builder = new ConcreteBuilder1();
     director.setBuilder(builder);
 
